@@ -7,6 +7,17 @@
 ## convention, directories are marked through a trailing first and listed
 ## first in each category.
 
+build/
+Debug/
+Release/
+x64/
+.vs/
+.vscode/
+*.sdf
+*.suo
+*.vcxproj.user
+*.ipch
+
 # Files brought in by gnulib-tool:
 /build-aux/config.libpath
 /build-aux/config.rpath
