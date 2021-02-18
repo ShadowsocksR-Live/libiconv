@@ -1,3 +1,27 @@
+2021-02-07  Bruno Haible  <bruno@clisp.org>
+
+	Support creating shared libraries on MidnightBSD.
+	Patch from <https://savannah.gnu.org/patch/?10007>.
+	* m4/libtool.m4: Treat MidnightBSD like FreeBSD.
+	* build-aux/ltmain.sh: Likewise.
+
+2021-01-31  Bruno Haible  <bruno@clisp.org>
+
+	Update after gnulib changed on 2020-08-26.
+	* configure.ac: Test $iconv_arg1, not $am_cv_proto_iconv_arg1.
+
+2021-01-31  Bruno Haible  <bruno@clisp.org>
+
+	Switch to autoconf 2.71.
+	* autogen.sh: Update comment.
+	* configure.ac: Use AS_HELP_STRING instead of AC_HELP_STRING. Invoke
+	AC_C_BIGENDIAN instead of CL_WORDS_LITTLEENDIAN.
+	* m4/eilseq.m4: Require Autoconf >= 2.61.
+	(AC_EILSEQ): Improve quoting. Use AC_COMPUTE_INT instead of
+	_AC_COMPUTE_INT.
+	* m4/endian.m4: Remove file.
+	* Makefile.in (SOURCE_FILES): Remove it.
+
 2020-12-08  Bruno Haible  <bruno@clisp.org>
 
 	Switch to autoconf 2.70.
