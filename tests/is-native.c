@@ -1,4 +1,4 @@
-/* Copyright (C) 2001, 2008 Free Software Foundation, Inc.
+/* Copyright (C) 2021 Free Software Foundation, Inc.
    This file is part of the GNU LIBICONV Library.
 
    The GNU LIBICONV Library is free software; you can redistribute it
@@ -15,22 +15,16 @@
    License along with the GNU LIBICONV Library; see the file COPYING.LIB.
    If not, see <https://www.gnu.org/licenses/>.  */
 
-/* Encodings used by system dependent locales on OSF/1 a.k.a. Tru64. */
+#include "config.h"
 
-DEFENCODING(( "DEC-KANJI",
-            ),
-            dec_kanji,
-            { dec_kanji_mbtowc, NULL },   { dec_kanji_wctomb, NULL })
-#ifdef USE_OSF1_ALIASES
-DEFALIAS(     "DECKANJI",               /* OSF/1 */
-            dec_kanji)
-#endif
+#include "qemu.h"
 
-DEFENCODING(( "DEC-HANYU",
-            ),
-            dec_hanyu,
-            { dec_hanyu_mbtowc, NULL },   { dec_hanyu_wctomb, NULL })
-#ifdef USE_OSF1_ALIASES
-DEFALIAS(     "DECHANYU",               /* OSF/1 */
-            dec_hanyu)
-#endif
+/* Returns 0 (success) in a native environment.
+   Returns 1 (failure) in a cross-executing environment, that is, in an
+   environment where compiled programs use a different libc than the system's
+   libc.  Currently, only QEMU user-mode environments are recognized.  */
+
+int main ()
+{
+  return is_running_under_qemu_user () ? 1 : 0;
+}
