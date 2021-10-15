@@ -76,10 +76,14 @@
 #endif
 
 /* Define to 'int' if <sys/types.h> does not define. */
+#if defined(_MSC_VER)
 #define mode_t int
+#endif
 
 /* Define as a signed type of the same size as size_t. */
+#if defined(_MSC_VER)
 #define ssize_t int
+#endif
 
 //#define LIBCHARSET_DLL_EXPORTED  __declspec(dllexport)
 #define LIBCHARSET_DLL_EXPORTED 

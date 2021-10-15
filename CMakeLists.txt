@@ -1,5 +1,5 @@
 CMAKE_MINIMUM_REQUIRED  (VERSION 3.12)
-PROJECT                 (LibIconv)
+PROJECT                 (Iconv)
 
 # options
 OPTION                  (ICONV_BUILD_SHARED_LIBS "Build shared libraries" ON)
@@ -17,6 +17,8 @@ INCLUDE_DIRECTORIES     (BEFORE SYSTEM
                           "${PROJECT_SOURCE_DIR}/libcharset/include"
                           "${PROJECT_SOURCE_DIR}/include"
                           "${PROJECT_SOURCE_DIR}/"
+                          "${PROJECT_SOURCE_DIR}/win32"
+                          "${PROJECT_SOURCE_DIR}/win32/private"
                         )
 IF                      (ICONV_SET_OUTPUT_DIRECTORIES)
   SET                     (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/plugin)
@@ -303,13 +305,13 @@ IF                      (ICONV_BUILD_STATIC_LIBS)
   SET                     (CMAKE_CXX_FLAGS_DEBUG "${TPL_FLAGS_DEBUG} -D_LIB -DUSING_STATIC_LIBICONV")
   SET                     (CMAKE_CXX_FLAGS_RELEASE "${TPL_FLAGS_RELEASE} -D_LIB -DUSING_STATIC_LIBICONV")
 
-  ADD_LIBRARY             ("libiconvStatic" STATIC ${tmpFiles})
-  SET_TARGET_PROPERTIES	  ("libiconvStatic" PROPERTIES LINKER_LANGUAGE CXX)
+  ADD_LIBRARY             (iconvStatic STATIC ${tmpFiles})
+  SET_TARGET_PROPERTIES	  (iconvStatic PROPERTIES LINKER_LANGUAGE CXX)
 ENDIF                   ()
 IF                      (ICONV_BUILD_SHARED_LIBS)
   SET                     (CMAKE_CXX_FLAGS_DEBUG "${TPL_FLAGS_DEBUG} -D_USRDLL -DBUILDING_LIBICONV -DBUILDING_LIBCHARSET -DLIBICONV_EXPORTS")
   SET                     (CMAKE_CXX_FLAGS_RELEASE "${TPL_FLAGS_RELEASE} -D_USRDLL -DBUILDING_LIBICONV -DBUILDING_LIBCHARSET -DLIBICONV_EXPORTS")
 
-  ADD_LIBRARY             ("libiconv" MODULE ${tmpFiles})
-  SET_TARGET_PROPERTIES   ("libiconv" PROPERTIES LINKER_LANGUAGE CXX)
+  ADD_LIBRARY             (iconv MODULE ${tmpFiles})
+  SET_TARGET_PROPERTIES   (iconv PROPERTIES LINKER_LANGUAGE CXX)
 ENDIF                   ()
