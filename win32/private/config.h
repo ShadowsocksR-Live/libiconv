@@ -84,6 +84,3 @@
 #if defined(_MSC_VER)
 #define ssize_t int
 #endif
-
-//#define LIBCHARSET_DLL_EXPORTED  __declspec(dllexport)
-#define LIBCHARSET_DLL_EXPORTED 
