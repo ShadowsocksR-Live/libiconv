@@ -18,6 +18,14 @@
 #ifndef _LIBCHARSET_H
 #define _LIBCHARSET_H
 
+#if defined(__GNUC__) && BUILDING_LIBCHARSET
+#define LIBCHARSET_DLL_EXPORTED __attribute__((__visibility__("default")))
+#elif defined _MSC_VER && BUILDING_LIBCHARSET
+#define LIBCHARSET_DLL_EXPORTED __declspec(dllexport)
+#else
+#define LIBCHARSET_DLL_EXPORTED
+#endif
+
 #include <localcharset.h>
 
 
@@ -33,7 +41,7 @@ extern "C" {
    by the corresponding pathname with the current prefix instead.  Both
    prefixes should be directory names without trailing slash (i.e. use ""
    instead of "/").  */
-extern void libcharset_set_relocation_prefix (const char *orig_prefix,
+extern LIBCHARSET_DLL_EXPORTED void libcharset_set_relocation_prefix (const char *orig_prefix,
                                               const char *curr_prefix);
 
 
