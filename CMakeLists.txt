@@ -4,7 +4,6 @@ PROJECT                 (Iconv)
 # options
 OPTION                  (ICONV_BUILD_SHARED_LIBS "Build shared libraries" ON)
 OPTION                  (ICONV_BUILD_STATIC_LIBS "Build static libraries" ON)
-OPTION                  (ICONV_SET_OUTPUT_DIRECTORIES "Set output directories" ON)
 
 # needed packages
 SET                     (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules")
@@ -20,10 +19,6 @@ INCLUDE_DIRECTORIES     (BEFORE SYSTEM
                           "${PROJECT_SOURCE_DIR}/win32"
                           "${PROJECT_SOURCE_DIR}/win32/private"
                         )
-IF                      (ICONV_SET_OUTPUT_DIRECTORIES)
-  SET                     (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/plugin)
-  SET                     (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
-ENDIF                   ()
 
 # compiler settings
 SET                     (CMAKE_CXX_STANDARD 17)
